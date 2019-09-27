@@ -30,15 +30,13 @@ while(exit == False & i<=7):
 	ad = int(input("Mem. address (byte)  --------------------> "))
 	loadstore = int(input("read (0) - Write (1)  -------------------> "))
 
-	c = Cache(ws,bls,ss,Rpol,ad,loadstore,table)
-
+	c = Cache(ws,bls,ss,Rpol,ad,loadstore)
 	
 	print("")
 	print("")
 	print("")
 	print("Address: " + str(ad) + " / Word: " + str(c.word()) + " / Block: " + str(c.block()))
 	print("Set: " + str(c.set()) + " / Tag: " + str(c.tag()))
-	print(str(c.hit_miss()))
 
 	if(ss == 8):
 		full = False
@@ -78,7 +76,7 @@ while(exit == False & i<=7):
 	print("")
 
 	a = input("Exit?  [y/n]")
-	if(a.lower() == 'y'):
+	if(a == 'y'):
 		exit = True
 	else:
 		exit = False
