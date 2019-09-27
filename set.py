@@ -8,10 +8,6 @@ class Set:
 	def number_sets(self):
 		cache.number_sets()
 
-	def dirty(self):
-		if(self.cache.rewr == 1):
-			return True
-		else:
-			return False
+	
 
 		

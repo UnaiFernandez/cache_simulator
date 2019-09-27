@@ -27,12 +27,13 @@ table = [[0,0,0,0,"---"],
 		[0,0,0,0,"---"],
 		[0,0,0,0,"---"]]
 exit = False
+access = 1
 i = 0
 while(exit == False & i<=7):
 	ad = int(input("Mem. address (byte)  --------------------> "))
 	loadstore = int(input("read (0) - Write (1)  -------------------> "))
 
-	c = Cache(ws,bls,ss,Rpol,ad,loadstore,table)
+	c = Cache(ws,bls,ss,Rpol,ad,loadstore,table,access)
 	
 	print("")
 	print("")
@@ -43,7 +44,9 @@ while(exit == False & i<=7):
 	s = Set(c, table)
 	t = Time(c.rewr, c.hit_miss(),c.dirty(),c.number_words_block())
 
+	print(str(c.hit_miss()))
 	print("Access time: " + str(t.accesstime()))
+	print("Hit rate: " + str(c.hit_rate()))
 
 
 	if(ss == 8):
@@ -88,3 +91,5 @@ while(exit == False & i<=7):
 		exit = True
 	else:
 		exit = False
+
+	access = access + 1

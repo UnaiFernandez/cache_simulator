@@ -1,6 +1,6 @@
 
 class Cache:
-	def __init__(self, sword, sblock, sset, rpol, ad, rewr, table):
+	def __init__(self, sword, sblock, sset, rpol, ad, rewr, table,access):
 		self.sword = sword
 		self.sblock = sblock
 		self.sset = sset
@@ -8,6 +8,7 @@ class Cache:
 		self.ad = ad
 		self.rewr = rewr
 		self.table = table
+		self.access = access
 
 	def word(self):
 		return self.ad//self.sword
@@ -47,8 +48,19 @@ class Cache:
 				else:
 					return "Cache miss"
 
+	def hits(self):
+		h = 0
+		if(self.hit_miss() == True):
+			h = h + 1
+		return h
+			
+	def hit_rate(self):
+		return self.hits()/self.access
+
 	def dirty(self):
-		if(self.rewr == 1):
+		i = 0
+		if(self.table[i][1] == 1):
+			i = i+1
 			return True
 		else:
 			return False
