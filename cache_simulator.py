@@ -1,6 +1,8 @@
 import math
 from cache import Cache
 from set import Set
+from timee import Time
+
 
 print("")
 print("           ###########################################################")
@@ -30,13 +32,19 @@ while(exit == False & i<=7):
 	ad = int(input("Mem. address (byte)  --------------------> "))
 	loadstore = int(input("read (0) - Write (1)  -------------------> "))
 
-	c = Cache(ws,bls,ss,Rpol,ad,loadstore)
+	c = Cache(ws,bls,ss,Rpol,ad,loadstore,table)
 	
 	print("")
 	print("")
 	print("")
 	print("Address: " + str(ad) + " / Word: " + str(c.word()) + " / Block: " + str(c.block()))
 	print("Set: " + str(c.set()) + " / Tag: " + str(c.tag()))
+
+	s = Set(c, table)
+	t = Time(c.rewr, c.hit_miss(),c.dirty(),c.number_words_block())
+
+	print("Access time: " + str(t.accesstime()))
+
 
 	if(ss == 8):
 		full = False
