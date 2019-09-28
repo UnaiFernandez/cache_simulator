@@ -41,7 +41,7 @@ while(exit == False & i<=7):
 	print("Address: " + str(ad) + " / Word: " + str(c.word()) + " / Block: " + str(c.block()))
 	print("Set: " + str(c.set()) + " / Tag: " + str(c.tag()))
 
-	s = Set(c, table)
+	#s = Set(c, table)
 	t = Time(c.rewr, c.hit_miss(),c.dirty(),c.number_words_block())
 
 	print(str(c.hit_miss()))
@@ -52,7 +52,7 @@ while(exit == False & i<=7):
 	if(ss == 8):
 		full = False
 		if(i == 7):
-			table[i][2] = tag
+			table[i][2] = c.tag()
 			if(loadstore == 1):
 				table[i][1] = 1
 			if(loadstore == 0):
@@ -62,7 +62,7 @@ while(exit == False & i<=7):
 			full = True
 			i = 0
 		elif(i<7):
-			table[i][2] = tag
+			table[i][2] = c.tag()
 			if(loadstore == 1):
 				table[i][1] = 1
 			if(loadstore == 0):
@@ -71,7 +71,9 @@ while(exit == False & i<=7):
 				table[i][3] = 1
 			i = i+1
 
+	s = Set(ss, c.line(), c.dirty(), c.tag(), c.block(), table)
 
+	s.replace()
 
 	print("")
 	print("")

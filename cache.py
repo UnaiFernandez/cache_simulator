@@ -20,7 +20,7 @@ class Cache:
 		return self.sblock//self.sword
 
 	def number_words(self):
-		return self.number_blocks()*self.number_words_block
+		return self.number_blocks()*self.number_words_block()
 
 	def block(self):
 		return self.word()//self.number_blocks()
@@ -39,6 +39,12 @@ class Cache:
 			return self.block()
 		else:
 			return self.block()//self.number_sets()
+
+	def number_lines(self):
+		return self.sset
+
+	def line(self):
+		return self.block()%self.number_lines() 
 
 	def hit_miss(self):
 		for i in range(len(self.table)):
@@ -62,6 +68,5 @@ class Cache:
 		if(self.table[i][1] == 1):
 			i = i+1
 			return True
-		else:
+		elif(self.table[i][1] == 0):
 			return False
-		

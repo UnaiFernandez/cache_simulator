@@ -18,4 +18,3 @@ class Time:
 				return constants.Tcm + self.Tbt() + self.Tbt()
 			else:
 				return constants.Tcm + self.Tbt()
-
