@@ -31,28 +31,31 @@ class Cache:
 	def set(self):
 		if(self.sset == 8):
 			return 0
+		elif(self.sset == 1):
+			return self.line()
 		else:
 			return self.block()%self.number_sets()
 
 	def tag(self):
 		if(self.sset == 8):
 			return self.block()
+		elif(self.sset == 1):
+			return self.block()//self.number_lines()
 		else:
 			return self.block()//self.number_sets()
 
 	def number_lines(self):
-		return self.sset
+		return 8
 
 	def line(self):
 		return self.block()%self.number_lines() 
 
 	def hit_miss(self):
 		for i in range(len(self.table)):
-			for j in range(len(self.table[i])):
-				if(self.table[i][j] == self.tag()):
-					return "Cache hit"
-				else:
-					return "Cache miss"
+			if(self.table[i][2] == self.tag()):
+				return True
+			else:
+				return False
 
 	def hits(self):
 		h = 0

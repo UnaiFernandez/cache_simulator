@@ -30,6 +30,8 @@ exit = False
 access = 1
 i = 0
 while(exit == False & i<=7):
+
+
 	ad = int(input("Mem. address (byte)  --------------------> "))
 	loadstore = int(input("read (0) - Write (1)  -------------------> "))
 
@@ -39,9 +41,9 @@ while(exit == False & i<=7):
 	print("")
 	print("")
 	print("Address: " + str(ad) + " / Word: " + str(c.word()) + " / Block: " + str(c.block()))
-	print("Set: " + str(c.set()) + " / Tag: " + str(c.tag()))
+	print("Set: " + str(c.set()) + " / Tag: " + str(c.tag()) + " / Line: " + str(c.line()))
 
-	#s = Set(c, table)
+	s = Set(ss, c.line(), c.dirty(), c.tag(), c.block(), table)
 	t = Time(c.rewr, c.hit_miss(),c.dirty(),c.number_words_block())
 
 	print(str(c.hit_miss()))
@@ -49,31 +51,7 @@ while(exit == False & i<=7):
 	print("Hit rate: " + str(c.hit_rate()))
 
 
-	if(ss == 8):
-		full = False
-		if(i == 7):
-			table[i][2] = c.tag()
-			if(loadstore == 1):
-				table[i][1] = 1
-			if(loadstore == 0):
-				table[i][1] = 0
-			if(full == True):
-				table[i][3] = 1
-			full = True
-			i = 0
-		elif(i<7):
-			table[i][2] = c.tag()
-			if(loadstore == 1):
-				table[i][1] = 1
-			if(loadstore == 0):
-				table[i][1] = 0
-			if(full == True):
-				table[i][3] = 1
-			i = i+1
-
-	s = Set(ss, c.line(), c.dirty(), c.tag(), c.block(), table)
-
-	s.replace()
+	s.finder()
 
 	print("")
 	print("")

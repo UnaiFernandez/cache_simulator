@@ -11,7 +11,7 @@ class Time:
 		return constants.Tmm + (self.number_words_block-1)*constants.Tbuff
 
 	def accesstime(self): 
-		if(self.hitmiss == "Cache hit"):
+		if(self.hitmiss == True):
 			return constants.Tcm
 		else:
 			if(self.dirty == True):
