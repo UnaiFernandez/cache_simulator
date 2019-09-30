@@ -1,8 +1,9 @@
 
 class Set:
-	def __init__(self, sset, line, dirty, tag, block, table):
+	def __init__(self, sset, line, setnum , dirty, tag, block, table):
 			self.sset = sset
 			self.line = line
+			self.setnum = setnum
 			self.dirty = dirty
 			self.tag = tag
 			self.block = block
@@ -40,43 +41,86 @@ class Set:
 
 		elif(self.sset == 2):
 			found = False
-			for i in range(1,2):
-				for j in range(len(self.table[i])):
-					if(self.repl(i) == 2 & found == False):
-						self.table[i][0] = 1
-						self.table[i][1] = self.intdirty()
-						self.table[i][2] = self.tag
-						self.table[i][3] = 0
-						self.table[i][4] = self.block
-						found = True
-					elif(self.repl(i) == 0 & found == False):
-						self.table[i][0] = 1
-						self.table[i][1] = self.intdirty()
-						self.table[i][2] = self.tag
-						self.table[i][3] = 0
-						self.table[i][4] = self.block
-						found = True
-					self.table[i][3] = self.table[i][3] + 1
-
+			if(self.setnum == 0):
+				for i in range(0,2):
+					if(found == False):
+						if(self.repl(i) == 0):
+							self.replace(i)
+							found = True
+						elif(self.repl(i) == 2):
+							self.replace(i)
+							found = True
+					if(self.table[i][3] > 0):
+						self.table[i][3] += 1 
+					elif(self.table[i][3] == -1):
+						self.table[i][3] = 1
+			elif(self.setnum == 1):
+				for i in range(2,4):
+					if(found == False):
+						if(self.repl(i) == 0):
+							self.replace(i)
+							found = True
+						elif(self.repl(i) == 2):
+							self.replace(i)
+							found = True
+					if(self.table[i][3] > 0):
+						self.table[i][3] += 1 
+					elif(self.table[i][3] == -1):
+						self.table[i][3] = 1
+			elif(self.setnum == 2):
+				for i in range(4,6):
+					if(found == False):
+						if(self.repl(i) == 0):
+							self.replace(i)
+							found = True
+						elif(self.repl(i) == 2):
+							self.replace(i)
+							found = True
+					if(self.table[i][3] > 0):
+						self.table[i][3] += 1 
+					elif(self.table[i][3] == -1):
+						self.table[i][3] = 1
+			elif(self.setnum == 3):
+				for i in range(6,8):
+					if(found == False):
+						if(self.repl(i) == 0):
+							self.replace(i)
+							found = True
+						elif(self.repl(i) == 2):
+							self.replace(i)
+							found = True
+					if(self.table[i][3] > 0):
+						self.table[i][3] += 1 
+					elif(self.table[i][3] == -1):
+						self.table[i][3] = 1
 		elif(self.sset == 4):
 			found = False
-			for j in range(0,2):
+			if(self.setnum == 0):
 				for i in range(0,4):
-					if(self.repl(i) == 4 & found == False):
-						self.table[i][0] = 1
-						self.table[i][1] = self.intdirty()
-						self.table[i][2] = self.tag
-						self.table[i][3] = 0
-						self.table[i][4] = self.block
-						found = True
-					elif(self.repl(i) == 0 & found == False):
-						self.table[i][0] = 1
-						self.table[i][1] = self.intdirty()
-						self.table[i][2] = self.tag
-						self.table[i][3] = 0
-						self.table[i][4] = self.block
-						found = True
-			self.table[i][3] = self.table[i][3] + 1
+					if(found == False):
+						if(self.repl(i) == 0):
+							self.replace(i)
+							found = True
+						elif(self.repl(i) == 2):
+							self.replace(i)
+							found = True
+					if(self.table[i][3] > 0):
+						self.table[i][3] += 1 
+					elif(self.table[i][3] == -1):
+						self.table[i][3] = 1
+			elif(self.setnum == 1):
+				for i in range(4,8):
+					if(found == False):
+						if(self.repl(i) == 0):
+							self.replace(i)
+							found = True
+						elif(self.repl(i) == 2):
+							self.replace(i)
+							found = True
+					if(self.table[i][3] > 0):
+						self.table[i][3] += 1 
+					elif(self.table[i][3] == -1):
+						self.table[i][3] = 1
 
 		elif(self.sset == 8):	
 			found = False

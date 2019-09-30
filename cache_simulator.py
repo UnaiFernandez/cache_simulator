@@ -43,7 +43,7 @@ while(exit == False & i<=7):
 	print("Address: " + str(ad) + " / Word: " + str(c.word()) + " / Block: " + str(c.block()))
 	print("Set: " + str(c.set()) + " / Tag: " + str(c.tag()) + " / Line: " + str(c.line()))
 
-	s = Set(ss, c.line(), c.dirty(), c.tag(), c.block(), table)
+	s = Set(ss, c.line(), c.set(), c.dirty(), c.tag(), c.block(), table)
 	t = Time(c.rewr, c.hit_miss(),c.dirty(),c.number_words_block())
 
 	print(str(c.hit_miss()))
