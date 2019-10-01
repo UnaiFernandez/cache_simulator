@@ -23,7 +23,7 @@ class Cache:
 		return self.number_blocks()*self.number_words_block()
 
 	def block(self):
-		return self.word()//self.number_blocks()
+		return self.word()//self.number_words_block()
 
 	def number_sets(self):
 		return 8//self.sset
