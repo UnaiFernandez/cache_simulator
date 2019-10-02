@@ -31,14 +31,12 @@ class Setfifo:
 			for i in range(len(self.table)):
 				if(self.table[i][2] == self.tag):
 					self.replace(i)
-					i = 1
-					while(i < 9):
-						if(self.table[i][3] != 8):
-							self.table[i][3] = i
+					for i in range(0,8):
+						if(self.table[i][3] == 8):
+							i = 0
+							self.table[i][3] = i+1
 						else:
-							i = 1
-							self.table[i][3] = i
-						i = i + 1
+							self.table[i][3] = i+1
 		else:
 			if(self.sset == 1):	
 				self.table[self.line][0] = 1
@@ -46,13 +44,10 @@ class Setfifo:
 				self.table[self.line][2] = self.tag
 				self.table[self.line][3] = -1
 				self.table[self.line][4] = self.block
-				i = 0
-				while(i < 9):
-					if(self.table[i][3] == 8):
-						i = 0
-						self.table[i][3] = i+1
-					else:
-						self.table[i][3] = i+1
+				if(self.table[self.line][3] == 8):
+					self.table[self.line][3] = 1
+				else:
+					self.table[self.line][3] += 1
 					
 			elif(self.sset == 2):
 				print("yeet")
