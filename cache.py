@@ -69,8 +69,8 @@ class Cache:
 
 	def dirty(self):
 		i = 0
-		if(self.table[i][1] == 1):
+		if(self.rewr == 1):
 			i = i+1
 			return True
-		elif(self.table[i][1] == 0):
+		elif(self.rewr == 0):
 			return False

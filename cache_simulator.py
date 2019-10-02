@@ -2,6 +2,8 @@ import math
 from cache import Cache
 from set import Set
 from timee import Time
+from setfifo import Setfifo
+
 
 
 print("")
@@ -43,18 +45,34 @@ while(exit == False & i<=7):
 	print("")
 	print("Address: " + str(ad) + " / Word: " + str(c.word()) + " / Block: " + str(c.block()))
 	print("Set: " + str(c.set()) + " / Tag: " + str(c.tag()) + " / Line: " + str(c.line()))
+	
+	if(Rpol == 1):
+		s = Set(ss, c.line(), c.set(), c.dirty(), c.tag(), c.block(), c.hit_miss(), table)
+		t = Time(c.rewr, c.hit_miss(),c.dirty(),c.number_words_block())
 
-	s = Set(ss, c.line(), c.set(), c.dirty(), c.tag(), c.block(), c.hit_miss(), table)
-	t = Time(c.rewr, c.hit_miss(),c.dirty(),c.number_words_block())
-
-	print(str(c.hit_miss()))
-	print(str(c.hits()))
-	h = c.hits()
-	print("Access time: " + str(t.accesstime()))
-	print("Hit rate: " + str(round(c.hit_rate(),2)))
+		print(str(c.hit_miss()))
+		print(str(c.hits()))
+		print(str(c.dirty()))
+		h = c.hits()
+		print("Access time: " + str(t.accesstime()))
+		print("Hit rate: " + str(round(c.hit_rate(),2)))
 
 
-	s.finder()
+		s.finder()
+
+
+	if(Rpol == 0):
+		sfifo = Setfifo(ss, c.line(), c.set(), c.dirty(), c.tag(), c.block(), c.hit_miss(), table)
+		t = Time(c.rewr, c.hit_miss(),c.dirty(),c.number_words_block())
+
+		print(str(c.hit_miss()))
+		print(str(c.hits()))
+		print(str(c.dirty()))
+		h = c.hits()
+		print("Access time: " + str(t.accesstime()))
+		print("Hit rate: " + str(round(c.hit_rate(),2)))
+
+		sfifo.finder()
 
 	print("")
 	print("")
