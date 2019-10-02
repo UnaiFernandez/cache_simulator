@@ -28,6 +28,7 @@ table = [[0,0,0,0,"---"],
 		[0,0,0,0,"---"]]
 exit = False
 access = 1
+h = 0 #hit rate
 i = 0
 while(exit == False & i<=7):
 
@@ -35,7 +36,7 @@ while(exit == False & i<=7):
 	ad = int(input("Mem. address (byte)  --------------------> "))
 	loadstore = int(input("read (0) - Write (1)  -------------------> "))
 
-	c = Cache(ws,bls,ss,Rpol,ad,loadstore,table,access)
+	c = Cache(ws,bls,ss,Rpol,ad,loadstore,h,table,access)
 	
 	print("")
 	print("")
@@ -43,12 +44,14 @@ while(exit == False & i<=7):
 	print("Address: " + str(ad) + " / Word: " + str(c.word()) + " / Block: " + str(c.block()))
 	print("Set: " + str(c.set()) + " / Tag: " + str(c.tag()) + " / Line: " + str(c.line()))
 
-	s = Set(ss, c.line(), c.set(), c.dirty(), c.tag(), c.block(), table)
+	s = Set(ss, c.line(), c.set(), c.dirty(), c.tag(), c.block(), c.hit_miss(), table)
 	t = Time(c.rewr, c.hit_miss(),c.dirty(),c.number_words_block())
 
 	print(str(c.hit_miss()))
+	print(str(c.hits()))
+	h = c.hits()
 	print("Access time: " + str(t.accesstime()))
-	print("Hit rate: " + str(c.hit_rate()))
+	print("Hit rate: " + str(round(c.hit_rate(),2)))
 
 
 	s.finder()

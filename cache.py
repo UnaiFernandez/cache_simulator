@@ -1,12 +1,13 @@
 
 class Cache:
-	def __init__(self, sword, sblock, sset, rpol, ad, rewr, table,access):
+	def __init__(self, sword, sblock, sset, rpol, ad, rewr, hit, table,access):
 		self.sword = sword
 		self.sblock = sblock
 		self.sset = sset
 		self.rpol =rpol
 		self.ad = ad
 		self.rewr = rewr
+		self.hit = hit
 		self.table = table
 		self.access = access
 
@@ -54,14 +55,14 @@ class Cache:
 		for i in range(len(self.table)):
 			if(self.table[i][2] == self.tag()):
 				return True
-			else:
-				return False
+		return(self.table[i][2] == self.tag())
 
 	def hits(self):
-		h = 0
 		if(self.hit_miss() == True):
-			h = h + 1
-		return h
+			self.hit += 1
+		if(self.hit > 2):
+			self.hit -= 1
+		return self.hit
 			
 	def hit_rate(self):
 		return self.hits()/self.access
