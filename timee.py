@@ -18,3 +18,8 @@ class Time:
 				return constants.Tcm + self.Tbt() + self.Tbt()
 			else:
 				return constants.Tcm + self.Tbt()
+
+	def total_accesstime(self):
+		time = self.accesstime()
+		time = time + self.accesstime()
+		return time

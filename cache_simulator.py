@@ -90,6 +90,7 @@ while(exit == False & i<=7):
 	a = input("Exit?  [y/n]")
 	if(a == 'y'):
 		exit = True
+		print("Total access time: " + str(t.total_accesstime()))
 	else:
 		exit = False
 
