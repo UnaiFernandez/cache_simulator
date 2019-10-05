@@ -8,6 +8,7 @@ class Time:
 		self.number_words_block = number_words_block
 		self.table = table
 
+	#this function calculates the access time of the cache memory
 	def accesstime(self): 
 		if(self.hitmiss == True):
 			return constants.Tcm

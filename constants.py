@@ -1,4 +1,4 @@
-Tcm = 2
-Tmm = 21
-Tbuff = 1
-Tbt = 28
+Tcm = 2 #time to access cache memory
+Tmm = 21 #time to acces main memory
+Tbuff = 1 #interleaving buffer
+Tbt = 28 #Tmm + (number_of_words_block - 1)*Tbuff

@@ -1,15 +1,15 @@
 
 class Cache:
 	def __init__(self, sword, sblock, sset, rpol, ad, rewr, hit, table,access):
-		self.sword = sword
-		self.sblock = sblock
-		self.sset = sset
-		self.rpol =rpol
-		self.ad = ad
-		self.rewr = rewr
-		self.hit = hit
+		self.sword = sword #word size
+		self.sblock = sblock #block size
+		self.sset = sset #set size
+		self.rpol =rpol #replacement policy
+		self.ad = ad #address
+		self.rewr = rewr #read or write
+		self.hit = hit #hit or miss (boolean)
 		self.table = table
-		self.access = access
+		self.access = access #number of accesses
 
 	#Calculates the word
 	def word(self):
