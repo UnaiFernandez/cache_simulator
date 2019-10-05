@@ -4,7 +4,7 @@ from set import Set
 from timee import Time
 from setfifo import Setfifo
 
-
+#This is the main
 
 print("")
 print("           ###########################################################")
@@ -48,6 +48,7 @@ while(exit == False & i<=7):
 	print("Set: " + str(c.set()) + " / Tag: " + str(c.tag()) + " / Line: " + str(c.line()))
 	
 	if(Rpol == 1):
+		#if replacement policy is LRU
 		s = Set(ss, c.line(), c.set(), c.dirty(), c.tag(), c.block(), c.hit_miss(), table)
 		t = Time(c.rewr, c.hit_miss(),c.dirty(),c.number_words_block(), table)
 
@@ -59,10 +60,12 @@ while(exit == False & i<=7):
 		print("Hit rate: " + str(round(c.hit_rate(),2)))
 
 
+		#fill in the table with the new values
 		s.finder()
 
 
 	if(Rpol == 0):
+		#if replacement policy is fifo
 		sfifo = Setfifo(ss, c.line(), c.set(), c.dirty(), c.tag(), c.block(), c.hit_miss(), table)
 		t = Time(c.rewr, c.hit_miss(),c.dirty(),c.number_words_block(), table)
 
@@ -72,10 +75,14 @@ while(exit == False & i<=7):
 		print("Access time: " + str(t.accesstime()))
 		print("Hit rate: " + str(round(c.hit_rate(),2)))
 
+		#fill in the table with the new values
 		sfifo.finder()
 
 
+	
 	total_accesstime = total_accesstime + t.accesstime()
+	
+	#print the table
 	print("")
 	print("")
 	print("")
