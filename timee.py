@@ -1,25 +1,19 @@
 import constants
 
 class Time:
-	def __init__(self, rewr, hitmiss, dirty, number_words_block):
+	def __init__(self, rewr, hitmiss, dirty, number_words_block,table):
 		self.rewr = rewr
 		self.hitmiss = hitmiss
 		self.dirty = dirty
 		self.number_words_block = number_words_block
-
-	def Tbt(self):
-		return constants.Tmm + (self.number_words_block-1)*constants.Tbuff
+		self.table = table
 
 	def accesstime(self): 
 		if(self.hitmiss == True):
 			return constants.Tcm
 		else:
-			if(self.dirty == True):
-				return constants.Tcm + self.Tbt() + self.Tbt()
-			else:
-				return constants.Tcm + self.Tbt()
-
-	def total_accesstime(self):
-		time = self.accesstime()
-		time = time + self.accesstime()
-		return time
+			for i in range(len(self.table)):
+				if(self.table[i][1] == 1):
+					return constants.Tcm + constants.Tbt + constants.Tbt
+				else:
+					return constants.Tcm + constants.Tbt	

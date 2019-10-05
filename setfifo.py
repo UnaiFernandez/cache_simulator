@@ -65,11 +65,11 @@ class Setfifo:
 								self.table[i][3] = fifo1
 								self.table[i][4] = self.block
 								found = True
-							elif(self.repl(i) == 2):
+							elif(self.repl(i) == 3):
 								self.table[i][0] = 1
 								self.table[i][1] = self.intdirty()
 								self.table[i][2] = self.tag
-								self.table[i][3] = 2
+								self.table[i][3] = 3
 								self.table[i][4] = self.block
 								pop = True
 							if(fifo1 == 2):
@@ -77,7 +77,7 @@ class Setfifo:
 					for j in range(0,2):
 						if(full == True):
 							if(self.repl(j) == 1):
-								self.table[j][3] = 2
+								self.table[j][3] = 3
 					if(pop == True):
 						for x in range(0,2):
 							self.table[x][3] -= 1
@@ -121,11 +121,11 @@ class Setfifo:
 								self.table[i][3] = fifo3
 								self.table[i][4] = self.block
 								found = True
-							elif(self.repl(i) == 2):
+							elif(self.repl(i) == 3):
 								self.table[i][0] = 1
 								self.table[i][1] = self.intdirty()
 								self.table[i][2] = self.tag
-								self.table[i][3] = 2
+								self.table[i][3] = 3
 								self.table[i][4] = self.block
 								pop = True
 							if(fifo3 == 2):
@@ -133,7 +133,7 @@ class Setfifo:
 					for j in range(4,6):
 						if(full == True):
 							if(self.repl(j) == 1):
-								self.table[j][3] = 2
+								self.table[j][3] = 3
 					if(pop == True):
 						for x in range(4,6):
 							self.table[x][3] -= 1
@@ -149,11 +149,11 @@ class Setfifo:
 								self.table[i][3] = fifo4
 								self.table[i][4] = self.block
 								found = True
-							elif(self.repl(i) == 2):
+							elif(self.repl(i) == 3):
 								self.table[i][0] = 1
 								self.table[i][1] = self.intdirty()
 								self.table[i][2] = self.tag
-								self.table[i][3] = 2
+								self.table[i][3] = 3
 								self.table[i][4] = self.block
 								pop = True
 							if(fifo4 == 2):
@@ -161,10 +161,73 @@ class Setfifo:
 					for j in range(6,8):
 						if(full == True):
 							if(self.repl(j) == 1):
-								self.table[j][3] = 2
+								self.table[j][3] = 3
 					if(pop == True):
 						for x in range(6,8):
 							self.table[x][3] -= 1
+
+
+			elif(self.sset == 4):
+				found = False
+				full = False
+				pop = False
+				if(self.setnum == 0):
+					fifo1 = 0
+					for i in range(0,4):
+						fifo1 = fifo1 + 1
+						if(found == False):
+							if(self.repl(i) == 0):
+								self.table[i][0] = 1
+								self.table[i][1] = self.intdirty()
+								self.table[i][2] = self.tag
+								self.table[i][3] = fifo1
+								self.table[i][4] = self.block
+								found = True
+							elif(self.repl(i) == 5):
+								self.table[i][0] = 1
+								self.table[i][1] = self.intdirty()
+								self.table[i][2] = self.tag
+								self.table[i][3] = 5
+								self.table[i][4] = self.block
+								pop = True
+							if(fifo1 == 4):
+								full = True
+					for j in range(0,4):
+						if(full == True):
+							if(self.repl(j) == 1):
+								self.table[j][3] = 5
+					if(pop == True):
+						for x in range(0,4):
+							self.table[x][3] -= 1
+				elif(self.setnum == 1):
+					fifo2 = 0
+					for i in range(4,8):
+						fifo2 = fifo2 + 1
+						if(found == False):
+							if(self.repl(i) == 0):
+								self.table[i][0] = 1
+								self.table[i][1] = self.intdirty()
+								self.table[i][2] = self.tag
+								self.table[i][3] = fifo2
+								self.table[i][4] = self.block
+								found = True
+							elif(self.repl(i) == 5):
+								self.table[i][0] = 1
+								self.table[i][1] = self.intdirty()
+								self.table[i][2] = self.tag
+								self.table[i][3] = 5
+								self.table[i][4] = self.block
+								pop = True
+							if(fifo2 == 4):
+								full = True
+					for j in range(4,8):
+						if(full == True):
+							if(self.repl(j) == 1):
+								self.table[j][3] = 5
+					if(pop == True):
+						for x in range(4,8):
+							self.table[x][3] -= 1
+			
 
 			elif(self.sset == 8):
 				found = False

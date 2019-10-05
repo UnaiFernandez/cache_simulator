@@ -32,6 +32,7 @@ exit = False
 access = 1
 h = 0 #hit rate
 i = 0
+total_accesstime = 0
 while(exit == False & i<=7):
 
 
@@ -48,7 +49,7 @@ while(exit == False & i<=7):
 	
 	if(Rpol == 1):
 		s = Set(ss, c.line(), c.set(), c.dirty(), c.tag(), c.block(), c.hit_miss(), table)
-		t = Time(c.rewr, c.hit_miss(),c.dirty(),c.number_words_block())
+		t = Time(c.rewr, c.hit_miss(),c.dirty(),c.number_words_block(), table)
 
 		print(str(c.hit_miss()))
 		print(str(c.hits()))
@@ -63,17 +64,18 @@ while(exit == False & i<=7):
 
 	if(Rpol == 0):
 		sfifo = Setfifo(ss, c.line(), c.set(), c.dirty(), c.tag(), c.block(), c.hit_miss(), table)
-		t = Time(c.rewr, c.hit_miss(),c.dirty(),c.number_words_block())
+		t = Time(c.rewr, c.hit_miss(),c.dirty(),c.number_words_block(), table)
 
-		print(str(c.hit_miss()))
+		print("Hit: " + str(c.hit_miss()))
 		print(str(c.hits()))
-		print(str(c.dirty()))
 		h = c.hits()
 		print("Access time: " + str(t.accesstime()))
 		print("Hit rate: " + str(round(c.hit_rate(),2)))
 
 		sfifo.finder()
 
+
+	total_accesstime = total_accesstime + t.accesstime()
 	print("")
 	print("")
 	print("")
@@ -90,7 +92,7 @@ while(exit == False & i<=7):
 	a = input("Exit?  [y/n]")
 	if(a == 'y'):
 		exit = True
-		print("Total access time: " + str(t.total_accesstime()))
+		print("Total access time: " + str(total_accesstime))
 	else:
 		exit = False
 

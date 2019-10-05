@@ -53,9 +53,9 @@ class Cache:
 
 	def hit_miss(self):
 		for i in range(len(self.table)):
-			if(self.table[i][2] == self.tag()):
+			if(self.table[i][4] == self.block()):
 				return True
-		return(self.table[i][2] == self.tag())
+		return(self.table[i][4] == self.block())
 
 	def hits(self):
 		if(self.hit_miss() == True):
