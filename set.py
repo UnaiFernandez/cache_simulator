@@ -1,4 +1,3 @@
-
 class Set:
 	def __init__(self, sset, line, setnum , dirty, tag, block, hit, table):
 			self.sset = sset #set size
